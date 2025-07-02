@@ -61,7 +61,7 @@
 				format: '{value:.1f}'
 			},
 			maxColor: '#ff4c2c',
-			minColor: '#ffffff',
+			minColor: 'var(--bg-color)',
 			startOnTick: false,
 			endOnTick: false,
 		},
@@ -69,7 +69,7 @@
 		series: [{
 			data: dataArr,
 			borderWidth: 0,
-			nullColor: '#EFEFEF',
+			nullColor: 'var(--bg-color-light)',
 			colsize: 24 * 36e5, // one day
 			tooltip: {
 				headerFormat: 'GasPrice<br/>',
@@ -78,8 +78,9 @@
 			dataLabels: {
 				enabled: true,
 				style: {
-                    fontWeight: 'normal'
-                },
+					fontWeight: 'normal',
+					color: 'var(--body-color)'
+				},
 				format: "{point.value:.1f}"
 			}
 		}],
@@ -514,7 +515,7 @@
 			formatGWei(number, digits) {
 				let gwei = number / 1e9
 				if (gwei < 1) {
-					return "< 1"
+					return gwei.toFixed(1)
 				}
 				return (gwei).toFixed(digits)
 			}
